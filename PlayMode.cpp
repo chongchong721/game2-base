@@ -14,13 +14,13 @@
 
 GLuint meshes_for_lit_color_texture_program = 0;
 Load< MeshBuffer > meshes(LoadTagDefault, []() -> MeshBuffer const * {
-	MeshBuffer const *ret = new MeshBuffer(data_path("../maze.pnct"));
+	MeshBuffer const *ret = new MeshBuffer(data_path("./maze.pnct"));
 	meshes_for_lit_color_texture_program = ret->make_vao_for_program(lit_color_texture_program->program);
 	return ret;
 });
 
 Load< Scene > level(LoadTagDefault, []() -> Scene const * {
-	return new Scene(data_path("../maze.scene"), [&](Scene &scene, Scene::Transform *transform, std::string const &mesh_name){
+	return new Scene(data_path("./maze.scene"), [&](Scene &scene, Scene::Transform *transform, std::string const &mesh_name){
 		Mesh const &mesh = meshes->lookup(mesh_name);
 
 		scene.drawables.emplace_back(transform);
