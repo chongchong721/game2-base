@@ -107,6 +107,7 @@ int main(int argc, char **argv) {
 
 	//------------ create game mode + make current --------------
 	Mode::set_current(std::make_shared< PlayMode >());
+	//Mode::set_current(std::make_shared<ShowMeshesMode>());
 
 	//------------ main loop ------------
 

@@ -23,6 +23,14 @@
 #include <unordered_map>
 
 struct Scene {
+	// Bouding box structure, the same as in the mesh, but with name?
+	// This bounding box is in plane's local coordinate space. Each time before comparing this with the sphere, need to change the sphere to plane space
+	struct Bbox{
+		std::string name;
+		glm::vec3 min;
+		glm::vec3 max;
+	};
+
 	struct Transform {
 		//Transform names are useful for debugging and looking up locations in a loaded scene:
 		std::string name;
@@ -117,6 +125,7 @@ struct Scene {
 	};
 
 	//Scenes, of course, may have many of the above objects:
+	std::list<Bbox> bboxes;
 	std::list< Transform > transforms;
 	std::list< Drawable > drawables;
 	std::list< Camera > cameras;
